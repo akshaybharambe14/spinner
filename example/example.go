@@ -1,8 +1,9 @@
 package main
 
 import (
-	"go-spinner"
 	"time"
+
+	"github.com/akshaybharambe14/spinner"
 )
 
 func main() {

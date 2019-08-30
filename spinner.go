@@ -61,6 +61,7 @@ func (s *Spinner) Start(quit chan struct{}) {
 	duration := time.Tick(s.duration)
 	end := len(variants[s.variant]) - 1
 	pf := printFrame(end, s.variant)
+	fmt.Println()
 	for {
 		select {
 		case <-speed:
@@ -73,6 +74,7 @@ func (s *Spinner) Start(quit chan struct{}) {
 	}
 
 Done:
+	fmt.Println()
 	// exit
 }
 
