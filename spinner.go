@@ -59,8 +59,7 @@ func (s *Spinner) configure() {
 func (s *Spinner) Start(quit chan struct{}) {
 	speed := time.Tick(time.Millisecond * time.Duration(s.speed*100))
 	duration := time.Tick(s.duration)
-	end := len(variants[s.variant]) - 1
-	pf := printFrame(end, s.variant)
+	pf := printFrame(s.variant)
 	fmt.Println()
 	for {
 		select {
@@ -78,11 +77,11 @@ Done:
 	// exit
 }
 
-func printFrame(end int, variant Variant) func() {
+func printFrame(variant Variant) func() {
 	i := 0
 	return func() {
 		fmt.Printf("\r%s", variants[variant][i])
-		if i == end {
+		if i == (len(variants[variant]) - 1) {
 			i = 0
 		} else {
 			i++
